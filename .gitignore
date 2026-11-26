@@ -1,2 +1,8 @@
 __pycache__/
 *.pyc
+# raw downloads and caches (re-create with src/download_data.sh)
+data/dot/*/
+data/hillarys/
+data/fremantle/
+data/processed/
+data/dot/keys.txt
