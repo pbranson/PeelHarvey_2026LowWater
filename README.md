@@ -119,6 +119,47 @@ Peel stations 2.3–3.6 mm/yr; the difference likely reflects land motion and
 residual datum drift). So 2026 levels are low against the trend but less
 extreme against the raw 30-year mean.
 
+## Datum check against DoT nautical charts
+
+DoT charts WA848 (Peel Inlet & Harvey Estuary, Ed. 4), WA913 (Cape Peron to
+Dawesville) and WA001 (Ocean Reef to Cape Peron) carry tidal-plane tables:
+MSL above chart datum, with chart datum tied to a benchmark
+(`src/chart_check.py`, `outputs/chart_datum_check.json`).
+
+| Chart site | Chart datum | MSL above CD (m) | HAT | LAT |
+|---|---|---|---|---|
+| Mandurah Ocean Entrance | 2.060 m below Tidal BM 1971 | 0.77 | 1.26 | 0.35 |
+| Peel Inlet | 1.216 m below BM A895 | 0.56 | 0.93 | 0.31 |
+| Dawesville Ocean Entrance | 3.491 m below BM DMH 102 | 0.62 | 1.24 | 0.17 |
+| Harvey Estuary | 1.522 m below SSM PHS 6 | 0.59 | 1.02 | 0.30 |
+| Fremantle (WA001) | 3.088 m below BM 53A | 0.84 | 1.43 | 0.29 |
+
+The chart's tidal-plane epoch is not stated.
+
+- **Peel Inlet** (shared benchmark A895; the gauge zero is 1.5 cm above chart
+  CD). The homogenised gauge mean is 0.8 cm (1991–99) and 2.6 cm (1996–2005)
+  above chart MSL, so the modern gauge zero is the chart datum.
+  - The raw pre-1995 segment averages 18 cm higher (0.724 vs 0.575 m). This
+    independently confirms the −0.19 m step removed in Jan 1995.
+  - Later decades sit 8 cm above chart MSL, consistent with sea-level rise
+    since the chart epoch.
+- **Mandurah Fishermans Jetty** (shared benchmark TBM 1971). The gauge mean is
+  within −2.8 to +0.6 cm of chart MSL in 1991–2010, confirming its datum.
+  There is a gradual 4 cm fall relative to Hillarys/Fremantle through 2001,
+  probably settling or an entrance change; it is not corrected.
+- **Harvey** (no benchmark in the gauge header). The gauge mean exceeds chart
+  MSL by 5–8 cm in 1991–2010. The gauge zero is therefore about 5–8 cm below the
+  chart datum at SSM PHS 6.
+- **No AHD on the charts.** The charts do not relate CD to AHD, so the AHD
+  offsets above remain estimates. The AHD heights of A895, Tidal BM 1971,
+  SSM PHS 6 and DMH 102 (Landgate geodetic marks) would close this. With the
+  current offsets, Peel and Mandurah MSL at the chart epoch differ by ~1 cm in
+  AHD (chart MSLs: 0.56 vs 0.77 above their respective CDs).
+
+DoT's bathymetry point data (S3 `Bathymetry/PointData`, DV and MH zips) are
+already reduced to AHD from local sounding datums. They carry no CD/AHD offsets,
+so they do not add a datum check.
+
 ## Caveats
 
 - The datum steps are statistical estimates, not survey ties. AHD for the Peel

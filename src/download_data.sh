@@ -47,5 +47,13 @@ curl -sS -f -o data/fremantle/psmsl_111.rlrdata https://psmsl.org/data/obtaining
 mkdir -p data/soi
 curl -sS -f -A "$UA" -o data/soi/soi_bom_monthly.txt https://www.bom.gov.au/clim_data/IDCKGSM000/soi_monthly.txt
 curl -sS -f -o data/soi/soi_noaa.txt https://www.cpc.ncep.noaa.gov/data/indices/soi
+# DoT nautical charts (tidal-plane tables used by src/chart_check.py) and bathymetry readme
+mkdir -p data/bathy
+Z=https://dotazprdauegisextpubst01.blob.core.windows.net/transport-wa-public/Nauticalcharts
+for c in WA848_peel_inlet_and_harvey_estuary WA913_cape_peron_to_dawesville WA001_ocean_reef_to_cape_peron; do
+  curl -sS -f -o data/bathy/$c.pdf $Z/$c.pdf
+done
+curl -sS -o data/bathy/readme_points.txt https://s3-ap-southeast-2.amazonaws.com/transport.wa/Bathymetry/PointData/00_ReadMe_PointTextFiles.txt
+
 rm -f data/processed/hourly_raw.pkl   # force rebuild of cache
 echo "done"
