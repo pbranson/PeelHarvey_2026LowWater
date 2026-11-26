@@ -1,5 +1,7 @@
 # Peel-Harvey Estuary subtidal water levels and the SOI
 
+**Team summary of results: [REPORT.md](REPORT.md)**
+
 Analysis of low-frequency (subtidal) water level in the Peel-Harvey Estuary, WA,
 and its relationship with the Southern Oscillation Index (SOI), the ENSO index
 that modulates the strength of the Leeuwin Current and hence coastal sea level
